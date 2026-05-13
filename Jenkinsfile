@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh 'docker build -t apasoft/jenkins-web:latest .'
+        sh 'docker build -t orlaromo/jenkins-web:latest .'
       }
     }
     stage('Docker Push') {
@@ -12,6 +12,11 @@ pipeline {
           sh "docker login -u ${env.dockerUser} -p ${env.dockerPassword}"
           sh 'docker push apasoft/jenkins-web:latest'
         }
+      }
+    }
+    stage('Docker Run') {
+      steps {
+        sh 'docker build -t orlaromo/jenkins-web:latest .'
       }
     }
   }
