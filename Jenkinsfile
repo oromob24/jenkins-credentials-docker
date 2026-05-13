@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Docker Run') {
       steps {
-        sh 'docker build -t orlaromo/jenkins-web:latest .'
+        sh 'docker run -d  -p 9999:80 --name jenkins-web orlaromo/jenkins-web:latest'
       }
     }
   }
